@@ -1,16 +1,16 @@
 ﻿// Task 60.cpp : This file contains the 'main' function. Program execution begins and ends there.
 //
-/*Let a real matrix of order
+/*60. Пусть дана вещественная матрица порядка
 m n  ,
-all elements
-which are different. Rearrange its rows and columns so that it
-The largest item is in the upper left corner.*/
+все элементы
+которой различны. Переставить ее строки и столбцы так, чтобы ее
+наибольший элемент оказался в левом верхнем углу.*/
 
 #include <iostream>
 using namespace std;
 
-int main()
-{
+int main(){
+
     const int rows = 5;
     const int cols = 8;
 
