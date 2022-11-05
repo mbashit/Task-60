@@ -9,26 +9,59 @@ m n  ,
 #include <iostream>
 using namespace std;
 
-int main(){
-
-    const int rows = 5;
-    const int cols = 8;
-
-    int arr[rows][cols];
-
-    for (int i = 0; i < rows; i++) {
-
-        for (int j = 0; j < cols; j++) {
-
-            arr[i][j] = rand() % 10;
+int main() {
+    int M, N;
+    cout << "Enter M(lines): ";
+    cin >> M;
+    cout << "Enter N(columns): ";
+    cin >> N;
+    double** a = new double* [M];
+    for (int i = 0; i < M; ++i) {
+        a[i] = new double[N];
+    }
+    cout << "Enter Matrix:\n";
+    for (int i = 0; i < M; ++i) {
+        for (int j = 0; j < N; ++j) {
+            cin >> a[i][j];
         }
     }
-        for (int i = 0; i < rows; i++) {
-
-        for (int j = 0; j < cols; j++) {
-
-            cout << arr[i][j] << "\t";
+    double max = a[0][0];
+    int maxi = 0;
+    int maxj = 0;
+    for (int i = 0; i < M; ++i) {
+        for (int j = 0; j < N; ++j) {
+            if (a[i][j] > max) {
+                max = a[i][j];
+                maxi = i;
+                maxj = j;
+            }
+        }
+    }
+    if (maxi != 0) {
+        double* t = a[0];
+        a[0] = a[maxi];
+        a[maxi] = t;
+    }
+    if (maxj != 0) {
+        for (int i = 0; i < M; ++i) {
+            double temp = a[i][0];
+            a[i][0] = a[i][maxj];
+            a[i][maxj] = temp;
+        }
+    }
+    cout << "New Matrix:\n";
+    for (int i = 0; i < M; ++i) {
+        for (int j = 0; j < N; ++j) {
+            cout << a[i][j] << " ";
         }
         cout << endl;
     }
+    for (int i = 0; i < M; ++i) {
+        delete[] a[i];
+    }
+    delete[] a;
+    cout << endl;
+    system("pause");
+    return 0;
+
 }
